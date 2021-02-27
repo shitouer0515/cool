@@ -54,14 +54,14 @@ function Git_CloneScripts {
 }
 
 ## 更新scripts
-# function Git_PullScripts {
-#    echo -e "更新lxk0301脚本，原地址：${DockerURL}\n"
-#   cd ${ScriptsDir}
-#   git fetch --all
-#   ExitStatusScripts=$?
-#   git reset --hard origin/master
-#   echo
-# }
+function Git_PullScripts {
+   echo -e "更新Scripts脚本，原地址：${ScriptsURL}\n"
+  cd ${ScriptsDir}
+  git fetch --all
+  ExitStatusScripts=$?
+  git reset --hard origin/master
+  echo
+}
 
 ## 用户数量UserSum
 function Count_UserSum {

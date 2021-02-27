@@ -23,7 +23,7 @@ SendCount=${ShellDir}/send_count
 isTermux=${ANDROID_RUNTIME_ROOT}${ANDROID_ROOT}
 ScriptsURL=git@github.com:shitouer0515/jd_scripts.git
 ShellURL=https://github.com/shitouer0515/cool
-# DockerURL=https://github.com/shitouer0515/cool
+DockerURL=https://github.com/shitouer0515/jd_scripts
 
 ## 更新crontab，gitee服务器同一时间限制5个链接，因此每个人更新代码必须错开时间，每次执行git_pull随机生成。
 ## 每天只更新两次,(分.时.延迟)为随机cron
@@ -56,7 +56,7 @@ function Git_CloneScripts {
 
 ## 更新scripts
 function Git_PullScripts {
-   echo -e "更新Scripts脚本，原地址：${ScriptsURL}\n"
+   echo -e "更新Scripts脚本，原地址：${DockerURL}\n"
   cd ${ScriptsDir}
   git fetch --all
   ExitStatusScripts=$?

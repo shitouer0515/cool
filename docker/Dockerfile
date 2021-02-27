@@ -1,4 +1,4 @@
-FROM node:15.9.0-alpine3.12
+FROM node:lts-alpine3.12
 LABEL maintainer="Evine Deng"
 ARG JD_BASE_URL=https://github.com/shitouer0515/cool
 ARG JD_BASE_BRANCH=main

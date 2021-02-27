@@ -1,4 +1,5 @@
 # jd-base
+######   自用  自用  自用  请勿使用 !!!!!  ######
 如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，如你是旁路由，请更换网络模式添加--network host \,食用方法.！↓：
  ```
  docker run -dit \
@@ -10,7 +11,7 @@
 	--name jd \
 	--hostname jd \
 	--restart always \
-	noobx/jd:gitee
+	
 ```
 ### 如需指定目录，请把$PWD更改为指定目录即可，不然则为当前目录！
 执行上面命令之后建议执行'docker logs -f jd'查看安装进度，直到出现Welcome to Node.js v1x.x.0.代表成功！
@@ -21,15 +22,15 @@
 
 node基础镜像
 ```
-noobx/jd:gitee
+
 ```
 集成python与node镜像
 ```
-noobx/jd:py
+
 ```
 shell一键安装docker与watchtower(by:老揭力)
 ```shell
-wget -q https://raw.githubusercontent.com/dockere/jd-base/master/sample/jd-docker.sh -O jd-docker.sh && chmod +x jd-docker.sh && ./jd-docker.sh
+wget -q https://raw.githubusercontent.com/***/jd-base/master/sample/jd-docker.sh -O jd-docker.sh && chmod +x jd-docker.sh && ./jd-docker.sh
 ```
 # 你要知道的命令↓
 1. 手动 git pull 更新脚本

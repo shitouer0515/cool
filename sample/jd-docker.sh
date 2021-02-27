@@ -17,13 +17,13 @@ echo "
                                                                      
                      ==== Create by 老竭力 ====                                 
 "
-DOCKER_IMG_NAME="noobx/jd"
+DOCKER_IMG_NAME="shitouer0515/cool"
 JD_PATH=""
 SHELL_FOLDER=$(pwd)
 CONTAINER_NAME=""
 CONFIG_PATH=""
 LOG_PATH=""
-TAG="gitee"
+TAG=""
 NETWORK="host"
 JD_PORT=5678
 

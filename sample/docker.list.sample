@@ -55,3 +55,4 @@
 19 11 * * * bash jd jx_sign
 0 8,21 1-8/1 3 * bash jd jd_firecrackers
 20 * * * * bash jd jx_cfd
+51 7 * * * bash jd jd_daydlt

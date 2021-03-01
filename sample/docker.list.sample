@@ -54,3 +54,4 @@
 45 23 * * * bash jd jd_unsubscribe
 19 11 * * * bash jd jx_sign
 0 8,21 1-8/1 3 * bash jd jd_firecrackers
+20 * * * * bash jd jx_cfd

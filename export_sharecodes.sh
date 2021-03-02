@@ -12,7 +12,7 @@ Name2=(东东农场 东东萌宠 京东种豆得豆 京喜工厂 东东工厂 cr
 
 ## 导出互助码的通用程序.
 function Cat_Scodes {
-  if [ -d ${LogDir}/jd_$1 ] && [[ $(ls ${LogDir}/jd_$1) != "" ]]; then
+  if [ $1 != "cfd" ] && [ -d ${LogDir}/jd_$1 ] && [[ $(ls ${LogDir}/jd_$1) != "" ]]; then
     cd ${LogDir}/jd_$1
     for log in $(ls -r); do
       case $# in
@@ -26,11 +26,24 @@ function Cat_Scodes {
       [[ ${codes} ]] && break
     done
     [[ ${codes} ]] && echo "${codes}" || echo ${Tips}
+  elif [ $1 = "cfd" ] && [ -d ${LogDir}/jd_cfd ] && [[ $(ls ${LogDir}/jd_cfd) != "" ]]; then
+    cd ${LogDir}/jd_$1
+    for log in $(ls -r); do
+      case $# in
+        1)
+          codes=$(cat ${log} | grep -${Opt} "开始【京东账号|【🏖岛主】你的互助码" | uniq | perl -0777 -pe "{s|\*||g; s|开始||g; s|\n【🏖岛主】你的互助码(：)?:?|：|g; s|，.+||g}" | perl -ne '{print if /：/}')
+          ;;
+        2)
+          codes=$(grep -${Opt} $2 ${log} | perl -pe "{s| ||g; s|$2||g}")
+          ;;
+      esac
+      [[ ${codes} ]] && break
+    done
+    [[ ${codes} ]] && echo "${codes}" | sed s/[[:space:]]//g || echo ${Tips}
   else
     echo "还没有运行过 jd_$1 脚本，没有产生日志..."
   fi
 }
-
 ## 汇总
 function Cat_All {
   echo -e "\n本脚本从最后一个正常的日志中寻找互助码，某些账号缺失则代表在最后一个正常的日志中没有找到。"

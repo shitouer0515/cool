@@ -133,12 +133,12 @@ function Trans_UN_SUBSCRIBES {
 }
 
 ## 设置获取共享池助力码个数
-function Get_HelpPoolNum {
-  HelpPoolNum=$( printf "%d" "$HelpPoolNum" 2> /dev/null )
-  if [ $HelpPoolNum -lt 0 ] || [ $HelpPoolNum -gt 25 ]; then
-      HelpPoolNum=0
-  fi
-}
+# function Get_HelpPoolNum {
+#   HelpPoolNum=$( printf "%d" "$HelpPoolNum" 2> /dev/null )
+#   if [ $HelpPoolNum -lt 0 ] || [ $HelpPoolNum -gt 25 ]; then
+#       HelpPoolNum=0
+#   fi
+# }
 
 ## 申明全部变量
 function Set_Env {
@@ -146,7 +146,7 @@ function Set_Env {
   Combin_All
   Trans_JD_BEAN_SIGN_NOTIFY
   Trans_UN_SUBSCRIBES
-  Get_HelpPoolNum
+  # Get_HelpPoolNum
 }
 
 ## 随机延迟
@@ -252,8 +252,8 @@ function Run_Normal {
     LogFile="${LogDir}/${FileName}/${LogTime}.log"
     [ ! -d ${LogDir}/${FileName} ] && mkdir -p ${LogDir}/${FileName}
     cd ${WhichDir}
-    sed -i "s/randomCount = .* [0-9]* : [0-9]*;/randomCount = $HelpPoolNum;/g" ${FileName}.js
-    sed -i "s/randomCount=.*?0x[0-9a-f]*:0x[0-9a-f]*;/randomCount=$HelpPoolNum16;/g" ${FileName}.js
+    # sed -i "s/randomCount = .* [0-9]* : [0-9]*;/randomCount = $HelpPoolNum;/g" ${FileName}.js
+    # sed -i "s/randomCount=.*?0x[0-9a-f]*:0x[0-9a-f]*;/randomCount=$HelpPoolNum16;/g" ${FileName}.js
     node ${FileName}.js | tee ${LogFile}
   else
     echo -e "\n在${ScriptsDir}、${ScriptsDir}/backUp、${ConfigDir}三个目录下均未检测到 $1 脚本的存在，请确认...\n"

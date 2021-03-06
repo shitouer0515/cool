@@ -132,13 +132,12 @@ function Trans_UN_SUBSCRIBES {
   export UN_SUBSCRIBES="${goodPageSize}\n${shopPageSize}\n${jdUnsubscribeStopGoods}\n${jdUnsubscribeStopShop}"
 }
 
-## 设置获取互助池助力码个数
-function Get_HelpPoolNum{
-  helpPoolNum=$( printf "%d" "$HelpPoolNum" 2> /dev/null )
-  if [ $HelpPoolNum -lt 0] || [ $HelpPoolNum -gt 25 ]; then
+## 设置获取共享池助力码个数
+function Get_HelpPoolNum {
+  HelpPoolNum=$( printf "%d" "$HelpPoolNum" 2> /dev/null )
+  if [ $HelpPoolNum -lt 0 ] || [ $HelpPoolNum -gt 25 ]; then
       HelpPoolNum=0
   fi
-  HelpPoolNum16=0x$( printf %x $HelpPoolNum )
 }
 
 ## 申明全部变量
@@ -147,6 +146,7 @@ function Set_Env {
   Combin_All
   Trans_JD_BEAN_SIGN_NOTIFY
   Trans_UN_SUBSCRIBES
+  Get_HelpPoolNum
 }
 
 ## 随机延迟

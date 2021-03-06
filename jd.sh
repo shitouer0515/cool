@@ -88,7 +88,7 @@ function Combin_Sub {
 ## 组合Cookie、Token与互助码
 function Combin_All {
   export JD_COOKIE=$(Combin_Sub Cookie)
-  export JXNCTOKENS=$(Combin_Sub TokenJxnc)
+  # export JXNCTOKENS=$(Combin_Sub TokenJxnc)
   #东东农场(jd_fruit.js)
   export FRUITSHARECODES=$(Combin_Sub ForOtherFruit)
   #东东萌宠(jd_pet.js)
@@ -112,7 +112,7 @@ function Combin_All {
   #闪购盲盒(jd_sgmh.js)
   export JDSGMH_SHARECODES=$(Combin_Sub ForOtherSgmh)
   #京喜财富岛(jd_cfd.js)
-  export JDCFD_SHARECODES=$(Combin_Sub ForOtherJdcfd)
+  export JDCFD_SHARECODES=$(Combin_Sub ForOtherCfd)
 }
 
 ## 转换JD_BEAN_SIGN_STOP_NOTIFY或JD_BEAN_SIGN_NOTIFY_SIMPLE
@@ -130,6 +130,15 @@ function Trans_JD_BEAN_SIGN_NOTIFY {
 ## 转换UN_SUBSCRIBES
 function Trans_UN_SUBSCRIBES {
   export UN_SUBSCRIBES="${goodPageSize}\n${shopPageSize}\n${jdUnsubscribeStopGoods}\n${jdUnsubscribeStopShop}"
+}
+
+## 设置获取互助池助力码个数
+function Get_HelpPoolNum{
+  helpPoolNum=$( printf "%d" "$HelpPoolNum" 2> /dev/null )
+  if [ $HelpPoolNum -lt 0] || [ $HelpPoolNum -gt 25 ]; then
+      HelpPoolNum=0
+  fi
+  HelpPoolNum16=0x$( printf %x $HelpPoolNum )
 }
 
 ## 申明全部变量
@@ -243,6 +252,8 @@ function Run_Normal {
     LogFile="${LogDir}/${FileName}/${LogTime}.log"
     [ ! -d ${LogDir}/${FileName} ] && mkdir -p ${LogDir}/${FileName}
     cd ${WhichDir}
+    sed -i "s/randomCount = .* [0-9]* : [0-9]*;/randomCount = $HelpPoolNum;/g" ${FileName}.js
+    sed -i "s/randomCount=.*?0x[0-9a-f]*:0x[0-9a-f]*;/randomCount=$HelpPoolNum16;/g" ${FileName}.js
     node ${FileName}.js | tee ${LogFile}
   else
     echo -e "\n在${ScriptsDir}、${ScriptsDir}/backUp、${ConfigDir}三个目录下均未检测到 $1 脚本的存在，请确认...\n"

@@ -318,13 +318,22 @@ then
 else
   echo -e "\nshell脚本更新失败，请检查原因后再次运行git_pull.sh，或等待定时任务自动再次运行git_pull.sh...\n"
 fi
+
 ## 更新crontab
 [[ $(date "+%-H") -le 2 ]] && Update_Cron
-## 克隆或更新js脚本
 
+## 克隆或更新js脚本
+if [ ${ExitStatusShell} -eq 0 ]; then
+  echo -e "--------------------------------------------------------------\n"
   [ -f ${ScriptsDir}/package.json ] && PackageListOld=$(cat ${ScriptsDir}/package.json)
   [ -d ${ScriptsDir}/.git ] && Git_PullScripts || Git_CloneScripts
+fi
 
+## 移除通知的部分内容
+# sed -i '/本脚本开源免费使用 By/d' ${ScriptsDir}/sendNotify.js
+
+## 授予可执行权限
+chmod +x ${ShellDir}/*sh
 
 ## 执行各函数
 if [[ ${ExitStatusScripts} -eq 0 ]]

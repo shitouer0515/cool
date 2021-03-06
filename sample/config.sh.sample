@@ -101,8 +101,12 @@ export BARK_PUSH=""
 export BARK_SOUND=""
 
 ## 3. Telegram，如需使用，TG_BOT_TOKEN和TG_USER_ID必须同时赋值，教程：https://gitee.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md
+##    Telegram 代理类型为 http，比如代理为 http://127.0.0.1:1080，则分别填写 "127.0.0.1" 和 "1080"。如需使用，请自行解除下列注释
+
 export TG_BOT_TOKEN=""
 export TG_USER_ID=""
+# export TG_PROXY_HOST=""
+# export TG_PROXY_PORT=""
 
 ## 4. 钉钉，教程（看DD_BOT_TOKEN和DD_BOT_SECRET部分）：https://gitee.com/lxk0301/jd_scripts/blob/master/githubAction.md
 export DD_BOT_TOKEN=""
@@ -298,12 +302,12 @@ ForOtherJxnc6=""
 ## TOKEN的形式：{"farm_jstoken":"749a90f871adsfads8ffda7bf3b1576760","timestamp":"1610165423873","phoneid":"42c7e3dadfadsfdsaac-18f0e4f4a0cf"}
 ## 因TOKEN中带有双引号，因此，变量值两侧必须由一对单引号引起来
 ## TOKEN如何获取请阅读以下文件的注释：https://github.com/LXK9301/jd_scripts/blob/master/jd_jxnc.js
-TokenJxnc1=''
-TokenJxnc2=''
-TokenJxnc3=''
-TokenJxnc4=''
-TokenJxnc5=''
-TokenJxnc6=''
+## TokenJxnc1=''
+## TokenJxnc2=''
+## TokenJxnc3=''
+## TokenJxnc4=''
+## TokenJxnc5=''
+## TokenJxnc6=''
 
 
 ################################## 定义口袋书店互助（选填） ##################################
@@ -365,21 +369,21 @@ ForOtherSgmh6=""
 
 ################################## 定义京喜财富岛互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
-MyJdcfd1=""
-MyJdcfd2=""
-MyJdcfd3=""
-MyJdcfd4=""
-MyJdcfd5=""
-MyJdcfd6=""
-ForOtherJdcfdA=""
-ForOtherJdcfdB=""
+MyCfd1=""
+MyCfd2=""
+MyCfd3=""
+MyCfd4=""
+MyCfd5=""
+MyCfd6=""
+ForOtherCfdA=""
+ForOtherCfdB=""
 
-ForOtherJdcfd1=""
-ForOtherJdcfd2=""
-ForOtherJdcfd3=""
-ForOtherJdcfd4=""
-ForOtherJdcfd5=""
-ForOtherJdcfd6=""
+ForOtherCfd1=""
+ForOtherCfd2=""
+ForOtherCfd3=""
+ForOtherCfd4=""
+ForOtherCfd5=""
+ForOtherCfd6=""
 
 
 ################################## 定义东东超市蓝币兑换数量（选填） ##################################
@@ -539,24 +543,19 @@ export JDJOY_APPLYJDBEAN=""
 # export BUY_JOY_LEVEL=""
 
 
-################################## 定义是否自动加购物车（选填） ##################################
-## 口袋书店和东东小窝有些任务需要将商品加进购物车才能完成，默认 "false" 不做这些任务，如想做，请设置为 "true"
-export PURCHASE_SHOPS=""
-
-
-################################## Telegram 代理（选填） ##################################
-## Telegram 代理的 IP，代理类型为 http，比如你代理是 http://127.0.0.1:1080，则填写 "127.0.0.1"
-## 如需使用，请自行解除下一行的注释
-# export TG_PROXY_HOST=""
-
-## Telegram 代理的端口，代理类型为 http，比如你代理是 http://127.0.0.1:1080，则填写 "1080"
-## 如需使用，请自行解除下一行的注释
-# export TG_PROXY_PORT=""
-
-
 ################################## 定义京喜财富岛通知（选填） ##################################
 ## 输入true为通知,默认 "false",不填则为不通知
 export CFD_NOTIFY_CONTROL=""
+
+
+################################## 她的节（选填） ##################################
+## 定义她的节满足兑换多少京豆时提示，默认 0 不提示，格式：120 表示能兑换 120 豆子发出通知
+export FIRECRACKERS_NOTITY_BEAN=""
+
+
+################################## 定义是否自动加购物车（选填） ##################################
+## 口袋书店和东东小窝有些任务需要将商品加进购物车才能完成，默认 "false" 不做这些任务，如想做，请设置为 "true"
+export PURCHASE_SHOPS=""
 
 
 ################################## 是否添加DIY脚本（选填） ##################################
